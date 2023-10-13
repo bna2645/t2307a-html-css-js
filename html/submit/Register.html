@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            justify-content: center;
+            text-align: center;
+            display: flex;
+            background-image: url(./assets/img/slider1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            align-items: center;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        #container {
+            background-color: rgb(201, 235, 238);
+            border: none;
+            border-bottom: 2px solid black;
+            border-radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .form {
+            padding: 10px 15px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="return validateForm()">
+        <div id="container">
+            <h2>Register</h2>
+
+            <div class="form">
+                <label for="fullname">Full name</label><br>
+                <input type="text" id="fullname" required><br>
+            </div>
+
+            <div class="form">
+                <label for="email">Email</label><br>
+                <input type="email" id="email" required><br>
+            </div>
+
+            <div class="form">
+                <label for="gender">Gender</label><br>
+                <input type="radio" id="male" name="sex" value="Male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="sex" value="Female" required>
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="sex" value="Other" required>
+                <label for="other">Other</label>
+            </div>
+
+            <div class="form">
+                <label for="password">Password</label><br>
+                <input type="password" id="password" required><br>
+            </div>
+
+            <div class="form">
+                <label for="cpassword">Confirm Password</label><br>
+                <input type="password" id="cpassword" required><br>
+            </div>
+
+            <input type="submit" value="Register">
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            var fullname = document.getElementById("fullname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var cpassword = document.getElementById("cpassword").value;
+
+            var isValid = true;
+
+            if (fullname.trim() === "") {
+                document.getElementById("fullname").classList.add("error");
+                isValid = false;
+            } else {
+                document.getElementById("fullname").classList.remove("error");
+            }
+
+            if (email.trim() === "") {
+                document.getElementById("email").classList.add("error");
+                isValid = false;
+            } else {
+                document.getElementById("email").classList.remove("error");
+            }
+
+            if (password.trim() === "") {
+                document.getElementById("password").classList.add("error");
+                isValid = false;
+            } else {
+                document.getElementById("password").classList.remove("error");
+            }
+
+            if (cpassword.trim() === "" || cpassword !== password) {
+                document.getElementById("cpassword").classList.add("error");
+                isValid = false;
+            } else {
+                document.getElementById("cpassword").classList.remove("error");
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</html>
